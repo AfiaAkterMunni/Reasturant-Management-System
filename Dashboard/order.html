@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/all.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Restaurent Dashboard | Orders</title>
+</head>
+<body>
+    <!-- SIDEBAR -->
+    <nav class="navbar navbar-expand-md navbar-light p-0">
+        <button class="navbar-toggler ml-auto mb-2 bg-light" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <i class="fas fa-align-right fa-lg text-info"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- SIDEBAR -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 fixed-top sidebar bg-dark text-light p-0">
+                        <a href="dashboard.html" class="navbar-brand text-light text-uppercase d-block mx-auto mb-3 button-border p-2">
+                            <h5 class="text-center"><i class="fas fa-utensils"></i> Restaurant <br> Management <br> System</h5>
+                            <p class="text-center">Taste the myth</p>
+                        </a>
+
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-item">
+                                <a href="dashboard.html" class="nav-link text-white mb-2">
+                                    <i class="fas fa-tachometer-alt fa-lg mr-2"></i>Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item current">
+                                <a href="order.html" class="nav-link text-white mb-2 sidebar-link">
+                                    <i class="fas fa-list-ul fa-lg mr-2"></i>Food Orders
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="treservation.html" class="nav-link text-white mb-2 sidebar-link">
+                                    <i class="fas fa-table fa-lg mr-2"></i>Table Reservation
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="menu.html" class="nav-link text-white mb-2 sidebar-link">
+                                    <i class="fas fa-file-alt fa-lg mr-2"></i>Menu
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="newadmin.html" class="nav-link text-white mb-2 sidebar-link">
+                                    <i class="fas fa-user-circle fa-lg mr-2"></i>New Admin
+                                </a>
+                            </li>
+                            <li class="nav-item dropright">
+                                <a href="#" class="nav-link text-white mb-2 sidebar-link dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fas fa-file-alt fa-lg mr-2"></i>Reports
+                                </a>
+                                <div class="dropdown-menu p-0 bg-dark">
+                                    <a class="dropdown-item" href="revenue.html">Revenue Report</a>
+                                    <a class="dropdown-item" href="occupancy.html">Occupancy Report</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a href="message.html" class="nav-link text-white mb-2 sidebar-link">
+                                    <i class="fas fa-envelope fa-lg mr-2"></i>Message
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="staff.html" class="nav-link text-white mb-2 sidebar-link">
+                                    <i class="fas fa-users fa-lg mr-2"></i>Staff
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="expense.html" class="nav-link text-white mb-2 sidebar-link">
+                                    <i class="fas fa-dollar-sign fa-lg mr-2"></i>Expense
+                                </a>
+                            </li>
+                        </ul>
+                    </div><!-- ./SIDEBAR -->
+                </div>
+            </div>
+        </div>
+    </nav><!-- ./SIDEBAR -->
+
+    <!-- TOPNAV -->
+    <section class="topnav">
+        <div class="container-fluid px-4">
+            <div class="row">
+                <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <h2><i class="fas fa-bars mr-3"></i> Dashboard</h2>
+                            </a>
+                        </li>
+                        <li class="nav-item ml-auto">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" style="font-size: 1rem; text-transform: lowercase;">
+                                <i class="fas fa-user-circle fa-lg"></i> Admin
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#" role="button" data-toggle="modal" data-target="#editProfileModal"><i class="fas fa-user"></i> Edit Profile</a>
+                                <a class="dropdown-item" href="#" role="button" data-toggle="modal" data-target="#changePasswordModal"><i class="fas fa-cog"></i> Change Password</a>
+                                <a class="dropdown-item" href="#" role="button" data-toggle="modal" data-target="#logOutModal"><i class="fas fa-power-off"></i> Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section><!-- ./TOPNAV -->
+
+    <!-- ORDER LIST -->
+    <section class="order-list py-3 common-shadow">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between">
+                                    <h1 class="card-text">Orders List</h1>
+                                    <button class="btn btn-lg btn-success ml-auto" data-toggle="modal" data-target="#addOrderModal"><i class="fas fa-plus-circle"></i> Add Order</button>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-responsive table-hover text-center">
+                                        <thead class="thead-background">
+                                            <tr>
+                                                <th scope="col">Order ID</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Location</th>
+                                                <th scope="col">Order Type</th>
+                                                <th scope="col">Food List</th>
+                                                <th scope="col">Phone</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Time</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+        
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Ratul</td>
+                                                <td>ratulalmamun23@gmail.com</td>
+                                                <td>uttara, dhaka</td>
+                                                <td>home delivery</td>
+                                                <td>burger</td>
+                                                <td>01965088417</td>
+                                                <td>225</td>
+                                                <td>2:25 PM</td>
+                                                <td>26 November, 2019</td>
+                                                <td>
+                                                    <button class="btn btn-md btn-primary m-1">Edit</button>
+                                                    <button class="btn btn-md btn-danger m-1">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Ratul</td>
+                                                <td>ratulalmamun23@gmail.com</td>
+                                                <td>uttara, dhaka</td>
+                                                <td>home delivery</td>
+                                                <td>burger</td>
+                                                <td>01965088417</td>
+                                                <td>225</td>
+                                                <td>2:25 PM</td>
+                                                <td>26 November, 2019</td>
+                                                <td>
+                                                    <button class="btn btn-md btn-primary m-1">Edit</button>
+                                                    <button class="btn btn-md btn-danger m-1">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Ratul</td>
+                                                <td>ratulalmamun23@gmail.com</td>
+                                                <td>uttara, dhaka</td>
+                                                <td>home delivery</td>
+                                                <td>burger</td>
+                                                <td>01965088417</td>
+                                                <td>225</td>
+                                                <td>2:25 PM</td>
+                                                <td>26 November, 2019</td>
+                                                <td>
+                                                    <button class="btn btn-md btn-primary m-1">Edit</button>
+                                                    <button class="btn btn-md btn-danger m-1">Delete</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- ./ORDER LIST-->
+
+    <!-- addOrderModal MODAL -->
+    <div class="modal fade" id="addOrderModal">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header bg-modal text-white">
+                    <h5 class="modal-title">Edit Profile</h5>
+                    <button class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="roomtype">Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Full Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" placeholder="Enter Your Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" class="form-control" placeholder="Enter Your Location">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" class="form-control" placeholder="Enter Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <label for="ordertype">Order Type</label>
+                            <select name="" id="" class="form-control">
+                                <option value="">-- Select Order Type --</option>
+                                <option value="">Pickup</option>
+                                <option value="">Home Delivery</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="foodlist">Food List</label>
+                            <select name="" id="" class="form-control">
+                                <option value="">-- Select Food List --</option>
+                                <option value="">Burger</option>
+                                <option value="">Pizza</option>
+                                <option value="">Sandwitch</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="text" class="form-control" placeholder="Enter Price">
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Time</label>
+                            <input type="text" class="form-control" placeholder="Get Time">
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" class="form-control" placeholder="Get Date">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button class="btn btn-success" data-dismiss="modal">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ./addOrderModal MODAL -->
+
+    <!-- editProfileModal MODAL -->
+    <div class="modal fade" id="editProfileModal">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header bg-modal text-white">
+                    <h5 class="modal-title">Edit Profile</h5>
+                    <button class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="roomtype">Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Full Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" placeholder="Enter Your Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" placeholder="Enter Your Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" class="form-control" placeholder="Confirm Your Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="Phone">Phone Number</label>
+                            <input type="tel" class="form-control" placeholder="Enter Phone Number">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button class="btn btn-success" data-dismiss="modal">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ./editProfileModal MODAL -->
+
+    <!-- changePassword MODAL -->
+    <div class="modal fade" id="changePasswordModal">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header bg-modal text-white">
+                    <h5 class="modal-title">Change Password</h5>
+                    <button class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="oldPassword">Old Password</label>
+                            <input type="password" class="form-control" placeholder="Enter Old Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" class="form-control" placeholder="Enter New Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmNewPassword">Confirm New Password</label>
+                            <input type="password" class="form-control" placeholder="Confirm New Password">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button class="btn btn-success" data-dismiss="modal">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ./changePassword MODAL -->
+
+    <!-- LogOut MODAL -->
+    <div class="modal fade" id="logOutModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-modal text-white">
+                    <h4 class="modal-title">Want to leave?</h4>
+                    <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <p class="lead">Press logout to leave</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" type="button" data-dismiss="modal">Stay Here</button>
+                    <button class="btn btn-danger" type="button" data-dismiss="modal">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ./LogOut MODAL -->
+
+    <!-- JavaScript -->
+    <script src="../js/jquery-3.3.1.slim.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/Chart.bundle.min.js"></script>
+    <!-- CHART JS -->
+    <!-- CUSTOM JAVASCRIPT -->
+    <script src="../js/main.js"></script>
+</body>
+</html>
